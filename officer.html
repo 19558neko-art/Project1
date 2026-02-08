@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESQ-Repair | เจ้าหน้าที่</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.css">
+</head>
+<body>
+    <!-- เมนูแฮมเบอร์เกอร์ -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="hamburger-icon" id="hamburgerIcon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+    
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="user-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="ผู้ใช้" class="user-avatar">
+                <div>
+                    <h3 id="userName">เจ้าหน้าที่</h3>
+                    <p>ผู้ใช้งานระบบ</p>
+                </div>
+            </div>
+            <div class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" id="menuDashboard"><i class="fas fa-chart-bar"></i> แดชบอร์ดสรุปผล</a></li>
+                <li><a href="#" id="menuRepair"><i class="fas fa-tools"></i> ส่งซ่อมครุภัณฑ์</a></li>
+                <li><a href="#" id="menuTracking"><i class="fas fa-search"></i> ติดตามการซ่อม</a></li>
+                <li><a href="#" id="menuHistory"><i class="fas fa-history"></i> ประวัติการซ่อม</a></li>
+                <li><a href="#" id="menuStatistics"><i class="fas fa-chart-pie"></i> สถิติการซ่อม</a></li>
+                <li><a href="#" id="menuUsers"><i class="fas fa-users"></i> จัดการสมาชิก</a></li>
+                <li><a href="#" id="menuLogout"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+        
+        <div class="theme-toggle sidebar-theme">
+            <button id="themeToggle" class="btn btn-secondary">
+                <i class="fas fa-moon"></i> โหมดกลางคืน
+            </button>
+        </div>
+    </div>
+    
+    <!-- Overlay สำหรับปิดเมนู -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <!-- เนื้อหาหลัก -->
+    <div class="main-content">
+        <header class="main-header">
+            <h1 id="pageTitle">แดชบอร์ดสรุปผล</h1>
+        </header>
+        
+        <div class="content-area" id="contentArea">
+            <!-- เนื้อหาจะถูกเปลี่ยนตามเมนูที่เลือก -->
+            <div class="dashboard-container">
+                <div class="welcome-message">
+                    <h2>ยินดีต้อนรับเข้าสู่ระบบ ESQ-Repair</h2>
+                    <p>ระบบส่งซ่อมครุภัณฑ์สำหรับเจ้าหน้าที่</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #3498db;">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalRepairs">0</h3>
+                            <p>ส่งซ่อมทั้งหมด</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #f39c12;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="pendingRepairs">0</h3>
+                            <p>รอดำเนินการ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #27ae60;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="completedRepairs">0</h3>
+                            <p>เสร็จสิ้น</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #e74c3c;">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="cancelledRepairs">0</h3>
+                            <p>ยกเลิก</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h3>คำขอซ่อมล่าสุด</h3>
+                    <div class="activity-list" id="recentActivity">
+                        <p class="no-activity">ไม่มีกิจกรรมล่าสุด</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal สำหรับรายละเอียด -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">รายละเอียด</h3>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- เนื้อหา Modal -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/.js"></script>
+    <script src="js/officer.js"></script>
+    <script src="js/repairs.js"></script>
+    <script src="js/notifications.js"></script>
+</body>
+</html>
